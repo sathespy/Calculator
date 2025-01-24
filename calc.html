@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: linear-gradient(to right,darkgreen,green,lime,chartreuse);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #divd {
+            background-color:navajowhite;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 280px;
+            text-align: center;
+        }
+
+        h1 {
+            color: chartreuse;
+            font-size: 36px;
+            font-weight: bold;
+            animation: bounceIn 1s ease-out;
+        }
+
+        input {
+            margin: 12px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            text-align: right;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: #ecf0f1;
+            color: #34495e;
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        button {
+            margin: 5px;
+            height: 50px;
+            width: 50px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: slateblue;
+            color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        .button-container button {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="divd">
+        <h1>Calculator</h1>
+        <input type="text" id="inpt" readonly>
+        <div class="button-container">
+            <button onclick="but('7')">7</button>
+            <button onclick="but('8')">8</button>
+            <button onclick="but('9')">9</button>
+            <button onclick="but('+')">+</button>
+
+            <button onclick="but('4')">4</button>
+            <button onclick="but('5')">5</button>
+            <button onclick="but('6')">6</button>
+            <button onclick="but('-')">-</button>
+
+            <button onclick="but('1')">1</button>
+            <button onclick="but('2')">2</button>
+            <button onclick="but('3')">3</button>
+            <button onclick="but('*')">X</button>
+
+            <button onclick="clr()">C</button>
+            <button onclick="but('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="but('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        function but(buter) {
+            document.getElementById("inpt").value += buter;
+        }
+
+        function clr() {
+            document.getElementById("inpt").value = "";
+        }
+
+        function calculate() {
+            try {
+                let result = eval(document.getElementById("inpt").value);
+                document.getElementById("inpt").value = result;
+            } catch (e) {
+                document.getElementById("inpt").value = "Error";
+            }
+        }
+    </script>
+    <footer>
+        <h2><strong>Project by Om sathe. </strong></h2>
+    </footer>
+</body>
+</html>
